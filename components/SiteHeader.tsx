@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  { href: "/#skills", label: "Skills" },
+  { href: "/#work", label: "Work" },
   { href: "/#team", label: "Team" },
 ];
 
@@ -43,9 +43,6 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <Link href="/projects" className="btn-fantasy text-xs md:hidden">
-          Projects
-        </Link>
         <Link href="/projects" className="btn-fantasy hidden text-xs md:inline-flex">
           Enter the Archives
         </Link>

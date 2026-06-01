@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { GameGrid } from "@/components/GameGrid";
-import { SkillBadges } from "@/components/SkillBadges";
 import { FantasyFrame } from "@/components/FantasyFrame";
-import { teamTagline, teamStory, teamMembers, processSteps } from "@/data/team";
+import { teamTagline, teamStory, teamMembers, processSteps, workSection } from "@/data/team";
 
 export default function HomePage() {
   return (
@@ -11,7 +10,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl">
           <FantasyFrame variant="hero" className="text-center">
             <p className="font-display text-xs tracking-[0.3em] text-mist uppercase">
-              Fantasy Game Development Studio
+              Fantasy Game Development Team
             </p>
             <h1 className="mt-4 font-display text-4xl font-bold tracking-wide sm:text-6xl">
               <span className="gold-text">MegaMelon</span>
@@ -29,14 +28,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="skills" className="px-4 py-16 sm:px-6">
+      <section id="work" className="px-4 py-16 sm:px-6">
         <div className="mx-auto max-w-7xl">
-          <h2 className="section-title gold-text text-center">Forged Skills</h2>
-          <p className="mx-auto mt-4 max-w-xl text-center text-parchment-dim">
-            From ink-wash dungeons to alliance wars — our craft spans art, systems, and ship.
+          <h2 className="section-title gold-text text-center">{workSection.title}</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-parchment-dim">
+            {workSection.lead}
           </p>
-          <div className="mt-12">
-            <SkillBadges />
+          <FantasyFrame className="mx-auto mt-10 max-w-3xl space-y-4">
+            {workSection.paragraphs.map((paragraph, i) => (
+              <p key={i} className="prose-fantasy text-parchment-dim">
+                {paragraph}
+              </p>
+            ))}
+          </FantasyFrame>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            {workSection.highlights.map((item) => (
+              <div
+                key={item.label}
+                className="border border-gold-dim/30 bg-void-light/40 px-4 py-5 text-center"
+              >
+                <p className="font-display text-lg text-gold">{item.value}</p>
+                <p className="mt-2 text-xs tracking-wide text-parchment-dim uppercase">
+                  {item.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
