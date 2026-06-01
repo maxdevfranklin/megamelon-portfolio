@@ -5,17 +5,18 @@ import { notFound } from "next/navigation";
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { ScreenshotCarousel } from "@/components/ScreenshotCarousel";
 import { FantasyFrame } from "@/components/FantasyFrame";
-import { getAllSlugs, getGameBySlug } from "@/data/games";
+import { getGameBySlug, getPublishedSlugs, isGamePublished } from "@/data/games";
 import { filterExistingVideos } from "@/lib/media";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+  return getPublishedSlugs().map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  if (!isGamePublished(slug)) return { title: "Project Not Found" };
   const game = getGameBySlug(slug);
   if (!game) return { title: "Project Not Found" };
   return {
@@ -31,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProjectDetailPage({ params }: Props) {
   const { slug } = await params;
+  if (!isGamePublished(slug)) notFound();
   const game = getGameBySlug(slug);
   if (!game) notFound();
 

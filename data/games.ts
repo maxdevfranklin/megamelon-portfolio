@@ -29,10 +29,10 @@ export const games: GameProject[] = [
     tagline: "Roguelite ARPG in a Daoist comic world",
     genres: ["Roguelite", "Action", "ARPG"],
     platforms: ["mobile", "cross"],
-    coverImage: "/games/arena-of-dungeon-challengers/cover.jpg",
+    coverImage: "/games/arena-of-dungeon-challengers/cover.png",
     screenshots: [
-      "/games/arena-of-dungeon-challengers/shot-1.jpg",
-      "/games/arena-of-dungeon-challengers/shot-2.jpg",
+      "/games/arena-of-dungeon-challengers/short-1.png",
+      "/games/arena-of-dungeon-challengers/short-2.png",
     ],
     videos: [
       {
@@ -87,10 +87,10 @@ Every run combines divine souls, equipment, jades, and runes into unique builds 
     tagline: "Strategy cards, hidden roles, and social deduction",
     genres: ["Card", "Strategy", "Multiplayer"],
     platforms: ["mobile", "pc"],
-    coverImage: "/games/three-kingdoms-kill/cover.jpg",
+    coverImage: "/games/three-kingdoms-kill/cover.png",
     screenshots: [
-      "/games/three-kingdoms-kill/shot-1.jpg",
-      "/games/three-kingdoms-kill/shot-2.jpg",
+      "/games/three-kingdoms-kill/short-1.png",
+      "/games/three-kingdoms-kill/short-2.png",
     ],
     videos: [
       {
@@ -130,10 +130,10 @@ The real hook is not only the cards but reading people: is this player your ally
     tagline: "Merge-to-upgrade strategy on land, sea, and air",
     genres: ["Strategy", "Merge", "4X"],
     platforms: ["mobile", "pc"],
-    coverImage: "/games/top-war-battle-game/cover.jpg",
+    coverImage: "/games/top-war-battle-game/cover.png",
     screenshots: [
-      "/games/top-war-battle-game/shot-1.jpg",
-      "/games/top-war-battle-game/shot-2.jpg",
+      "/games/top-war-battle-game/short-1.png",
+      "/games/top-war-battle-game/short-2.png",
     ],
     videos: [
       {
@@ -183,8 +183,8 @@ Inside your island it feels like casual merge play; outside it becomes MMO war s
     tagline: "Anime commanders in an AI apocalypse",
     genres: ["SLG", "Strategy", "Anime"],
     platforms: ["mobile", "pc"],
-    coverImage: "/games/zgirls3/cover.jpg",
-    screenshots: ["/games/zgirls3/shot-1.jpg", "/games/zgirls3/shot-2.jpg"],
+    coverImage: "/games/zgirls3/cover.png",
+    screenshots: ["/games/zgirls3/short-1.png", "/games/zgirls3/short-2.png"],
     videos: [
       {
         label: "Base Building & Strategy",
@@ -364,12 +364,30 @@ Custom display cabinets, gacha unboxing, and five brand factions (Defenders, Van
   },
 ];
 
+/** Games with full project pages (videos, copy, screenshots). */
+export const publishedGameSlugs = [
+  "arena-of-dungeon-challengers",
+  "three-kingdoms-kill",
+  "top-war-battle-game",
+  "zgirls3",
+] as const;
+
+export type PublishedGameSlug = (typeof publishedGameSlugs)[number];
+
+export function isGamePublished(slug: string): slug is PublishedGameSlug {
+  return (publishedGameSlugs as readonly string[]).includes(slug);
+}
+
 export function getGameBySlug(slug: string): GameProject | undefined {
   return games.find((g) => g.slug === slug);
 }
 
 export function getAllSlugs(): string[] {
   return games.map((g) => g.slug);
+}
+
+export function getPublishedSlugs(): string[] {
+  return [...publishedGameSlugs];
 }
 
 export const genreFilters = [
