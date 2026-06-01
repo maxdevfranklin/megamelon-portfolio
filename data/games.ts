@@ -8,7 +8,7 @@ export type GameProject = {
   platforms: Platform[];
   coverImage: string;
   screenshots: string[];
-  videos?: { label: string; src: string }[];
+  videos?: { label: string; src: string; description: string }[];
   trailerEmbedUrl?: string;
   description: string;
   features: string[];
@@ -34,8 +34,26 @@ export const games: GameProject[] = [
       "/games/arena-of-dungeon-challengers/shot-1.jpg",
       "/games/arena-of-dungeon-challengers/shot-2.jpg",
     ],
-    videos: [{ label: "Gameplay Reel", src: "/videos/arena-of-dungeon-challengers/main.mp4" }],
-    trailerEmbedUrl: "https://www.youtube.com/embed/XvRFJ24jrsE",
+    videos: [
+      {
+        label: "Cards & Dungeon Combat",
+        src: "/videos/arena-of-dungeon-challengers/main1.mp4",
+        description:
+          "Choose cards to build your loadout, then push through dungeon floors where card picks and real-time fighting stay linked — every run is pick abilities, enter the next room, and fight your way deeper.",
+      },
+      {
+        label: "Story Mode",
+        src: "/videos/arena-of-dungeon-challengers/main2.mp4",
+        description:
+          "A story mode you can follow from start to finish — scripted chapters, character beats, and set-piece encounters carry the Daoist comic narrative beyond procedural roguelite runs.",
+      },
+      {
+        label: "Multiplayer",
+        src: "/videos/arena-of-dungeon-challengers/main3.mp4",
+        description:
+          "Multiplayer lets you team up or face other players on shared arenas — cooperative runs and competitive modes add a social layer on top of solo dungeon crawling.",
+      },
+    ],
     description: `Arena of Dungeon Challengers is an anime-style roguelite action game published by SUPER ESPORTS PTE.LTD. As ancient seals weaken during a lunar eclipse, the desire-devouring Dark Void spreads — and players, guided by Master Nanzi, must repair seals and uncover the truth behind the Demon Lord's return.
 
 Every run combines divine souls, equipment, jades, and runes into unique builds across ever-changing dungeons. The "Eight Trigrams" mode offers battle-royale-style team play, while divination and daily elemental boosts add strategic depth before each encounter. The world is rendered in vibrant Chinese comic aesthetics with dynamic POV combat and Mandarin voice acting.`,
@@ -66,7 +84,7 @@ Every run combines divine souls, equipment, jades, and runes into unique builds 
   {
     slug: "three-kingdoms-kill",
     title: "Three Kingdoms Kill (三国杀)",
-    tagline: "Classic strategy card battles of the Three Kingdoms",
+    tagline: "Strategy cards, hidden roles, and social deduction",
     genres: ["Card", "Strategy", "Multiplayer"],
     platforms: ["mobile", "pc"],
     coverImage: "/games/three-kingdoms-kill/cover.jpg",
@@ -74,14 +92,21 @@ Every run combines divine souls, equipment, jades, and runes into unique builds 
       "/games/three-kingdoms-kill/shot-1.jpg",
       "/games/three-kingdoms-kill/shot-2.jpg",
     ],
-    videos: [{ label: "Gameplay Reel", src: "/videos/three-kingdoms-kill/main.mp4" }],
-    description: `Three Kingdoms Kill (三国杀) is Hangzhou Yoka's landmark strategy card game blending history, literature, and art. Players assume iconic generals from the Three Kingdoms era, deduce hidden identities, and outwit opponents in modes ranging from 5-player Identity battles to 2v2 ranked duels and national war scenarios.
+    videos: [
+      {
+        label: "Gameplay Reel",
+        src: "/videos/three-kingdoms-kill/main.mp4",
+        description:
+          "Secret roles, hero skills, and turn-based card play in one match — attack, dodge, heal, and bluff your way through Identity and ranked modes while reading who is really on your side.",
+      },
+    ],
+    description: `Three Kingdoms Kill (Sanguosha / 三国杀) is a different breed of game from action titles — closer to a strategy card game with social deception. You sit at a table with a few players, everyone receives a hidden objective such as assassinate the king or protect the king, and each player picks a hero with unique abilities. Turns revolve around playing cards — attack, dodge, heal, equipment, and signature skills — while a rules engine resolves effects in order.
 
-The mobile and PC experience features refreshed UI, trigger effects, general collection with skins, replay sharing, and modes including Happy Landlord, competitive tournaments, and AI practice — making it one of the most enduring card titles in Chinese gaming.`,
+The real hook is not only the cards but reading people: is this player your ally or pretending? It is half logic, half psychology — bluffing, betrayal, and clutch saves at 1 HP define the experience. Digital versions typically run on Unity or Cocos2d-x, but the core system is a turn-based rules loop: draw, play, resolve, repeat. Hangzhou Yoka's mobile and PC release adds refreshed UI, general collection with skins, replays, tournaments, and cross-play.`,
     features: [
+      "Hidden roles and hero-specific skill kits",
+      "Turn-based card combat with bluffing and deduction",
       "Identity, 2v2 ranked, and national war modes",
-      "Hundreds of generals with skins and schemes",
-      "Replay storage and spectator channels",
       "Cross-play on mobile and Google Play Games PC",
     ],
     publisher: "Hangzhou Yoka Network Technology (游卡)",
@@ -111,17 +136,27 @@ The mobile and PC experience features refreshed UI, trigger effects, general col
       "/games/top-war-battle-game/shot-2.jpg",
     ],
     videos: [
-      { label: "PC", src: "/videos/top-war-battle-game/main.mp4" },
-      { label: "Mobile", src: "/videos/top-war-battle-game/mobile.mp4" },
+      {
+        label: "PC Gameplay",
+        src: "/videos/top-war-battle-game/main.mp4",
+        description:
+          "Merge units on the island base, then zoom out to the world map — alliance wars, troop marches, and large-screen HUD clarity for the hybrid merge-and-strategy loop.",
+      },
+      {
+        label: "Mobile Gameplay",
+        src: "/videos/top-war-battle-game/mobile.mp4",
+        description:
+          "The same merge-to-upgrade loop on mobile — quick drags, hero recruitment, and alliance push notifications that pull you from casual merging into live PvP pressure.",
+      },
     ],
     trailerEmbedUrl: "https://www.youtube.com/embed/OL9KF5l6uG8",
-    description: `Top War: Battle Game from RiverGame / Topwar Studio revolutionized mobile strategy with merge-to-upgrade mechanics — combine buildings, skills, or units to instantly level up without long timers. Commanders build island bases, recruit legendary heroes, and lead land, navy, and air forces against the Dark Legion.
+    description: `Top War: Battle Game from RiverGame / Topwar Studio is a hybrid of merge gameplay, strategy, and base building. On the surface it looks simple — drag two level-1 soldiers together to create a level-2 soldier — and that merge loop is the core mechanic. Behind it sits a world map where you expand bases, join alliances, raid other players, and march armies across land, sea, and air.
 
-Alliance play drives server-vs-server wars, Dark Forces raids, War Robots events, and weekly Capital Throne showdowns. The title ships on Android, iOS, and Windows via Google Play Games.`,
+Inside your island it feels like casual merge play; outside it becomes MMO war strategy. That split is what makes it sticky — you can relax merging units, then get pulled into alliance wars and nightly pushes for stronger troops. The title is typically Unity on the client with a heavy online backend for persistent worlds and PvP. Progression loops and social pressure — "our alliance attacks tonight" — drive long-term engagement. Available on Android, iOS, and Windows via Google Play Games.`,
     features: [
-      "Merge-anything instant upgrade loop",
-      "Tri-service heroes and equipment",
-      "Alliance wars and seasonal events",
+      "Merge-to-upgrade core with instant progression",
+      "World-map bases, alliances, and player-vs-player wars",
+      "Tri-service heroes, equipment, and seasonal events",
       "Mobile and PC cross-platform play",
     ],
     publisher: "RiverGame / Topwar Studio",
@@ -151,18 +186,27 @@ Alliance play drives server-vs-server wars, Dark Forces raids, War Robots events
     coverImage: "/games/zgirls3/cover.jpg",
     screenshots: ["/games/zgirls3/shot-1.jpg", "/games/zgirls3/shot-2.jpg"],
     videos: [
-      { label: "PC", src: "/videos/zgirls3/main.mp4" },
-      { label: "Mobile", src: "/videos/zgirls3/mobile.mp4" },
+      {
+        label: "Base Building & Strategy",
+        src: "/videos/zgirls3/main1.mp4",
+        description:
+          "Post-apocalyptic base building — upgrade structures, train units, and manage the city core that feeds hero progression and world-map PvP.",
+      },
+      {
+        label: "Commanders & Story",
+        src: "/videos/zgirls3/main2.mp4",
+        description:
+          "Collect and level anime-style heroes with skills and stats, backed by Live2D performances, Japanese VO, and story CGs as squads head to zombie fights and guild wars.",
+      },
     ],
-    trailerEmbedUrl: "https://www.youtube.com/embed/5X77t23HbFY",
-    description: `Zgirls3 is RiverGame's anime-style strategy title set during the Crisis of Artificial Intelligence. Commanders lead Zgirls defending Gakuen on the front line — combining Live2D performances, Japanese voice acting, strategic squad combat, and bio-combatant research across army, navy, and air branches.
+    description: `Zgirls3 from RiverGame sits in the same broad ecosystem as Top War-style SLGs but leans into post-apocalyptic anime survival and base building. You upgrade city buildings, train units, collect anime-style heroes, and fight zombies or other players on a persistent map. Compared to pure merge-war titles, it emphasizes RPG progression — leveling heroes with skills and stats, not only stacking troops.
 
-Players unlock story CGs, build global alliances, and experience relationship-driven narrative where human connection becomes the strength to save a desolate world. The game launched on mobile and Microsoft's store ecosystem in late 2023.`,
+Live2D performances, Japanese voice acting, and story CGs still anchor the fantasy layer around Gakuen and the AI Crisis. Guild wars, world-map PvP, and alliance coordination rely on the same kind of Unity client and large server backend as sibling strategy games. The loop blends chill base management with pressure to keep pace for guild events and front-line pushes.`,
     features: [
-      "Live2D characters with Japanese VO",
-      "Base-building and tri-service research",
-      "Story CGs and commander relationships",
-      "Global alliances and cross-region play",
+      "City building with hero collection and RPG stats",
+      "Live2D characters, Japanese VO, and story CGs",
+      "Zombie PvE and world-map PvP with guild wars",
+      "Tri-service research across army, navy, and air",
     ],
     publisher: "RiverGame",
     storeLinks: [

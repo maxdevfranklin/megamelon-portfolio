@@ -89,14 +89,20 @@ export default async function ProjectDetailPage({ params }: Props) {
 
         <section className="mb-12">
           <h2 className="font-display text-sm tracking-widest text-gold uppercase">
-            Gameplay
+            {videos.length > 1 ? "Gameplay Walkthrough" : "Gameplay"}
           </h2>
+          {videos.length > 1 && (
+            <p className="mt-2 text-sm text-parchment-dim">
+              Clips from the live build — each section highlights a different part of the
+              experience.
+            </p>
+          )}
           <div className="mt-4">
             <VideoPlayer
               videos={videos}
               poster={game.coverImage}
               title={game.title}
-              trailerEmbedUrl={game.trailerEmbedUrl}
+              trailerEmbedUrl={videos.length > 0 ? undefined : game.trailerEmbedUrl}
             />
           </div>
         </section>

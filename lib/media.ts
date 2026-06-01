@@ -6,9 +6,15 @@ export function publicFileExists(publicPath: string): boolean {
   return fs.existsSync(path.join(process.cwd(), "public", relative));
 }
 
+export type GameplayVideoEntry = {
+  label: string;
+  src: string;
+  description: string;
+};
+
 export function filterExistingVideos(
-  videos?: { label: string; src: string }[],
-): { label: string; src: string }[] {
+  videos?: GameplayVideoEntry[],
+): GameplayVideoEntry[] {
   if (!videos) return [];
   return videos.filter((v) => publicFileExists(v.src));
 }
