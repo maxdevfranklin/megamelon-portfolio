@@ -77,7 +77,7 @@ export function GameCard({ game }: { game: GameProject }) {
                 Coming Soon
               </p>
               <p className="mt-2 text-[11px] leading-relaxed text-mist">
-                It's not completed yet.
+                It is not completed yet.
               </p>
             </div>
           )}
